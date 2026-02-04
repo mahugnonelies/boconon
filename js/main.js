@@ -1,4 +1,6 @@
-// DRAWER
+document.addEventListener("DOMContentLoaded", () => {
+
+  // DRAWER
 const menuBtn = document.getElementById("menuBtn");
 const drawer = document.getElementById("drawer");
 
@@ -217,7 +219,32 @@ window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
 
 
+  /* ===== CONSULTATION TABS ===== */
+  const tabButtons = document.querySelectorAll(".tab-btn");
+  const tabTexts = document.querySelectorAll(".tab-text");
+
+  if (tabButtons.length && tabTexts.length) {
+    tabButtons.forEach(button => {
+      button.addEventListener("click", () => {
+
+        tabButtons.forEach(btn => btn.classList.remove("active"));
+        tabTexts.forEach(text => text.classList.remove("active"));
+
+        button.classList.add("active");
+
+        const target = button.dataset.tab;
+        const targetEl = document.getElementById(target);
+        if (targetEl) targetEl.classList.add("active");
+      });
+    });
+  }
 
 
 
 
+
+
+
+
+  
+});
