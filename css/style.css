@@ -289,7 +289,7 @@ button {
 .cta-banner {
   position: relative;
   min-height: 90vh;
-  background: url("../assets/images/banner.jpg") center/cover no-repeat;
+  background: url("../assets/banner.png") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
