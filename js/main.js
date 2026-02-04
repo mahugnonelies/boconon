@@ -44,3 +44,13 @@ window.addEventListener("scroll", () => {
   });
 });
 
+// DOMAIN ICON CLICK EFFECT
+const domainIcons = document.querySelectorAll(".domain-icon");
+
+domainIcons.forEach(icon => {
+  icon.addEventListener("click", () => {
+    domainIcons.forEach(i => i.classList.remove("active"));
+    icon.classList.add("active");
+  });
+});
+
