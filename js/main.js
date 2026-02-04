@@ -1,246 +1,207 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // DRAWER
-const menuBtn = document.getElementById("menuBtn");
-const drawer = document.getElementById("drawer");
+  /* ===== DRAWER ===== */
+  const menuBtn = document.getElementById("menuBtn");
+  const drawer = document.getElementById("drawer");
 
-if (menuBtn && drawer) {
-  menuBtn.addEventListener("click", () => {
-    drawer.classList.toggle("open");
-  });
-
-  // Fermer le drawer après clic
-  document.querySelectorAll(".drawer a").forEach(link => {
-    link.addEventListener("click", () => {
-      drawer.classList.remove("open");
+  if (menuBtn && drawer) {
+    menuBtn.addEventListener("click", () => {
+      drawer.classList.toggle("open");
     });
-  });
-}
 
-// SLIDER (uniquement sur index.html)
-const slides = document.querySelectorAll(".slide");
-let index = 0;
+    document.querySelectorAll(".drawer a").forEach(link => {
+      link.addEventListener("click", () => {
+        drawer.classList.remove("open");
+      });
+    });
+  }
 
-if (slides.length > 0) {
-  const showSlide = (i) => {
-    slides.forEach(slide => slide.classList.remove("active"));
-    slides[i].classList.add("active");
+  /* ===== HERO SLIDER ===== */
+  const slides = document.querySelectorAll(".slide");
+  let slideIndex = 0;
+
+  if (slides.length > 0) {
+    const showSlide = i => {
+      slides.forEach(slide => slide.classList.remove("active"));
+      slides[i].classList.add("active");
+    };
+
+    setInterval(() => {
+      slideIndex = (slideIndex + 1) % slides.length;
+      showSlide(slideIndex);
+    }, 5000);
+
+    const next = document.getElementById("next");
+    const prev = document.getElementById("prev");
+
+    if (next && prev) {
+      next.onclick = () => {
+        slideIndex = (slideIndex + 1) % slides.length;
+        showSlide(slideIndex);
+      };
+
+      prev.onclick = () => {
+        slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+        showSlide(slideIndex);
+      };
+    }
+  }
+
+  /* ===== FADE UP ON SCROLL ===== */
+  const fadeElements = document.querySelectorAll(".fade-up");
+
+  const handleFade = () => {
+    fadeElements.forEach(el => {
+      const pos = el.getBoundingClientRect().top;
+      if (pos < window.innerHeight - 120) {
+        el.classList.add("visible");
+      }
+    });
   };
 
-  setInterval(() => {
-    index = (index + 1) % slides.length;
-    showSlide(index);
-  }, 5000);
+  window.addEventListener("scroll", handleFade);
+  handleFade();
 
-  const next = document.getElementById("next");
-  const prev = document.getElementById("prev");
+  /* ===== DOMAIN ICONS ===== */
+  const domainIcons = document.querySelectorAll(".domain-icon");
 
-  if (next && prev) {
-    next.onclick = () => {
-      index = (index + 1) % slides.length;
-      showSlide(index);
-    };
-
-    prev.onclick = () => {
-      index = (index - 1 + slides.length) % slides.length;
-      showSlide(index);
-    };
+  if (domainIcons.length) {
+    domainIcons.forEach(icon => {
+      icon.addEventListener("click", () => {
+        domainIcons.forEach(i => i.classList.remove("active"));
+        icon.classList.add("active");
+      });
+    });
   }
-}
 
-// SCROLL ANIMATION
-const fadeElements = document.querySelectorAll(".fade-up");
+  /* ===== TESTIMONIALS ===== */
+  const testimonials = document.querySelectorAll(".testimonial");
+  const dots = document.querySelectorAll(".dot");
+  let testimonialIndex = 0;
 
-window.addEventListener("scroll", () => {
-  fadeElements.forEach(el => {
-    const position = el.getBoundingClientRect().top;
-    const screenHeight = window.innerHeight;
+  if (testimonials.length && dots.length) {
+    const showTestimonial = i => {
+      testimonials.forEach(t => t.classList.remove("active"));
+      dots.forEach(d => d.classList.remove("active"));
+      testimonials[i].classList.add("active");
+      dots[i].classList.add("active");
+    };
 
-    if (position < screenHeight - 100) {
-      el.classList.add("visible");
-    }
-  });
-});
+    setInterval(() => {
+      testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+      showTestimonial(testimonialIndex);
+    }, 5000);
 
-// DOMAIN ICON CLICK EFFECT
-const domainIcons = document.querySelectorAll(".domain-icon");
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        testimonialIndex = i;
+        showTestimonial(i);
+      });
+    });
+  }
 
-domainIcons.forEach(icon => {
-  icon.addEventListener("click", () => {
-    domainIcons.forEach(i => i.classList.remove("active"));
-    icon.classList.add("active");
-  });
-});
+  /* ===== EVENTS ===== */
+  const eventItems = document.querySelectorAll(".event-item");
+  const eventDates = document.querySelectorAll(".event-date");
 
-// TESTIMONIALS SLIDER
-const testimonials = document.querySelectorAll(".testimonial");
-const dots = document.querySelectorAll(".dot");
-let testimonialIndex = 0;
+  if (eventItems.length && eventDates.length) {
+    eventItems.forEach((item, i) => {
+      item.addEventListener("click", () => {
+        eventDates.forEach(d => d.classList.remove("active"));
+        eventDates[i].classList.add("active");
+      });
+    });
+  }
 
-function showTestimonial(index) {
-  testimonials.forEach(t => t.classList.remove("active"));
-  dots.forEach(d => d.classList.remove("active"));
-
-  testimonials[index].classList.add("active");
-  dots[index].classList.add("active");
-}
-
-setInterval(() => {
-  testimonialIndex = (testimonialIndex + 1) % testimonials.length;
-  showTestimonial(testimonialIndex);
-}, 5000);
-
-dots.forEach((dot, i) => {
-  dot.addEventListener("click", () => {
-    testimonialIndex = i;
-    showTestimonial(i);
-  });
-});
-
-// EVENTS ACTIVE DATE
-const eventItems = document.querySelectorAll(".event-item");
-const eventDates = document.querySelectorAll(".event-date");
-
-eventItems.forEach((item, index) => {
-  item.addEventListener("click", () => {
-    eventDates.forEach(d => d.classList.remove("active"));
-    eventDates[index].classList.add("active");
-  });
-});
-
-document.querySelector(".newsletter-form").addEventListener("submit", e => {
-  e.preventDefault();
-  alert("Merci pour votre inscription 🙏");
-});
-
-// CONSULTATION TABS
-const tabButtons = document.querySelectorAll(".tab-btn");
-const tabTexts = document.querySelectorAll(".tab-text");
-
-tabButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    tabButtons.forEach(b => b.classList.remove("active"));
-    tabTexts.forEach(t => t.classList.remove("active"));
-
-    btn.classList.add("active");
-    document.getElementById(btn.dataset.tab).classList.add("active");
-  });
-});
-
-// ===== CONTACT FORM -> WHATSAPP =====
-const whatsappForm = document.getElementById("whatsappForm");
-
-if (whatsappForm) {
-  whatsappForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const nom = document.getElementById("nom").value.trim();
-    const prenoms = document.getElementById("prenoms").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const telephone = document.getElementById("telephone").value.trim();
-    const message = document.getElementById("message").value.trim();
-
-    const whatsappMessage =
-      `📩 *NOUVEAU MESSAGE – SITE BOKONON AGBA*\n\n` +
-      `👤 *Nom* : ${nom}\n` +
-      `👤 *Prénoms* : ${prenoms}\n` +
-      `📧 *Email* : ${email}\n` +
-      `📞 *Téléphone* : ${telephone}\n\n` +
-      `📝 *Message* :\n${message}`;
-
-    const phoneNumber = "22962620000";
-    const whatsappURL =
-      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-
-    window.open(whatsappURL, "_blank");
-  });
-}
-
-// ===== CONSULTATION FORM -> WHATSAPP =====
-const consultationForm = document.getElementById("consultationWhatsappForm");
-
-if (consultationForm) {
-  consultationForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const nom = document.getElementById("c-nom").value.trim();
-    const prenoms = document.getElementById("c-prenoms").value.trim();
-    const email = document.getElementById("c-email").value.trim();
-    const telephone = document.getElementById("c-telephone").value.trim();
-    const adresse = document.getElementById("c-adresse").value.trim();
-    const pays = document.getElementById("c-pays").value.trim();
-    const probleme = document.getElementById("c-probleme").value.trim();
-
-    const message =
-      `🧿 *DEMANDE DE CONSULTATION – SITE BOKONON AGBA*\n\n` +
-      `👤 *Nom* : ${nom}\n` +
-      `👤 *Prénoms* : ${prenoms}\n` +
-      `📧 *Email* : ${email}\n` +
-      `📞 *Téléphone* : ${telephone}\n` +
-      `🏠 *Adresse* : ${adresse || "Non précisée"}\n` +
-      `🌍 *Pays* : ${pays || "Non précisé"}\n\n` +
-      `📝 *Problème décrit* :\n${probleme}`;
-
-    const phoneNumber = "22962620000";
-    const whatsappURL =
-      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-
-    window.open(whatsappURL, "_blank");
-  });
-}
-
-document.querySelectorAll(".page-transition").forEach(link => {
-  link.addEventListener("click", e => {
-    e.preventDefault();
-    const href = link.getAttribute("href");
-    document.getElementById("pageFade").classList.add("active");
-
-    setTimeout(() => {
-      window.location.href = href;
-    }, 400);
-  });
-});
-
-const revealElements = document.querySelectorAll(".reveal");
-
-const revealOnScroll = () => {
-  revealElements.forEach(el => {
-    const windowHeight = window.innerHeight;
-    const elementTop = el.getBoundingClientRect().top;
-    const revealPoint = 120;
-
-    if (elementTop < windowHeight - revealPoint) {
-      el.classList.add("active");
-    }
-  });
-};
-
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
-
+  /* ===== NEWSLETTER ===== */
+  const newsletterForm = document.querySelector(".newsletter-form");
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", e => {
+      e.preventDefault();
+      alert("Merci pour votre inscription 🙏");
+    });
+  }
 
   /* ===== CONSULTATION TABS ===== */
   const tabButtons = document.querySelectorAll(".tab-btn");
   const tabTexts = document.querySelectorAll(".tab-text");
 
   if (tabButtons.length && tabTexts.length) {
-    tabButtons.forEach(button => {
-      button.addEventListener("click", () => {
+    tabButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        tabButtons.forEach(b => b.classList.remove("active"));
+        tabTexts.forEach(t => t.classList.remove("active"));
 
-        tabButtons.forEach(btn => btn.classList.remove("active"));
-        tabTexts.forEach(text => text.classList.remove("active"));
-
-        button.classList.add("active");
-
-        const target = button.dataset.tab;
-        const targetEl = document.getElementById(target);
-        if (targetEl) targetEl.classList.add("active");
+        btn.classList.add("active");
+        const target = document.getElementById(btn.dataset.tab);
+        if (target) target.classList.add("active");
       });
     });
   }
 
+  /* ===== CONTACT FORM -> WHATSAPP ===== */
+  const whatsappForm = document.getElementById("whatsappForm");
 
+  if (whatsappForm) {
+    whatsappForm.addEventListener("submit", e => {
+      e.preventDefault();
 
+      const message =
+        `📩 *NOUVEAU MESSAGE – SITE BOKONON AGBA*\n\n` +
+        `👤 Nom : ${document.getElementById("nom").value}\n` +
+        `👤 Prénoms : ${document.getElementById("prenoms").value}\n` +
+        `📧 Email : ${document.getElementById("email").value}\n` +
+        `📞 Téléphone : ${document.getElementById("telephone").value}\n\n` +
+        `📝 Message :\n${document.getElementById("message").value}`;
+
+      window.open(
+        `https://wa.me/22962620000?text=${encodeURIComponent(message)}`,
+        "_blank"
+      );
+    });
+  }
+
+  /* ===== CONSULTATION FORM -> WHATSAPP ===== */
+  const consultationForm = document.getElementById("consultationWhatsappForm");
+
+  if (consultationForm) {
+    consultationForm.addEventListener("submit", e => {
+      e.preventDefault();
+
+      const message =
+        `🧿 *DEMANDE DE CONSULTATION*\n\n` +
+        `👤 Nom : ${document.getElementById("c-nom").value}\n` +
+        `👤 Prénoms : ${document.getElementById("c-prenoms").value}\n` +
+        `📧 Email : ${document.getElementById("c-email").value}\n` +
+        `📞 Téléphone : ${document.getElementById("c-telephone").value}\n` +
+        `🏠 Adresse : ${document.getElementById("c-adresse").value || "N/A"}\n` +
+        `🌍 Pays : ${document.getElementById("c-pays").value || "N/A"}\n\n` +
+        `📝 Problème :\n${document.getElementById("c-probleme").value}`;
+
+      window.open(
+        `https://wa.me/22962620000?text=${encodeURIComponent(message)}`,
+        "_blank"
+      );
+    });
+  }
+
+const pageLinks = document.querySelectorAll(".page-transition");
+const pageFade = document.getElementById("pageFade");
+
+if (pageLinks.length && pageFade) {
+  pageLinks.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+
+      const href = link.getAttribute("href");
+      pageFade.classList.add("active");
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 400);
+    });
+  });
+}
 
 
 
