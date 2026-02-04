@@ -110,3 +110,17 @@ document.querySelector(".newsletter-form").addEventListener("submit", e => {
   e.preventDefault();
   alert("Merci pour votre inscription 🙏");
 });
+
+// CONSULTATION TABS
+const tabButtons = document.querySelectorAll(".tab-btn");
+const tabTexts = document.querySelectorAll(".tab-text");
+
+tabButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    tabButtons.forEach(b => b.classList.remove("active"));
+    tabTexts.forEach(t => t.classList.remove("active"));
+
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.tab).classList.add("active");
+  });
+});
