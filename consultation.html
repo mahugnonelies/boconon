@@ -99,26 +99,28 @@
       formulaire ci-dessous.
     </p>
 
-    <form>
-      <div class="form-row">
-        <input type="text" placeholder="Nom" required>
-        <input type="text" placeholder="Prénoms" required>
-      </div>
+    <form id="consultationWhatsappForm">
 
-      <div class="form-row">
-        <input type="email" placeholder="E-mail" required>
-        <input type="tel" placeholder="Téléphone" required>
-      </div>
+  <div class="form-row">
+    <input type="text" id="c-nom" placeholder="Nom" required>
+    <input type="text" id="c-prenoms" placeholder="Prénoms" required>
+  </div>
 
-      <div class="form-row">
-        <input type="text" placeholder="Adresse">
-        <input type="text" placeholder="Pays">
-      </div>
+  <div class="form-row">
+    <input type="email" id="c-email" placeholder="E-mail" required>
+    <input type="tel" id="c-telephone" placeholder="Téléphone" required>
+  </div>
 
-      <textarea placeholder="Décrire votre problème"></textarea>
+  <div class="form-row">
+    <input type="text" id="c-adresse" placeholder="Adresse">
+    <input type="text" id="c-pays" placeholder="Pays">
+  </div>
 
-      <button type="submit">ENVOYER VOTRE CONSULTATION</button>
-    </form>
+  <textarea id="c-probleme" placeholder="Décrire votre problème" required></textarea>
+
+  <button type="submit">ENVOYER VOTRE CONSULTATION</button>
+</form>
+
   </div>
 
 </section>
