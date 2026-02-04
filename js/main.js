@@ -124,3 +124,36 @@ tabButtons.forEach(btn => {
     document.getElementById(btn.dataset.tab).classList.add("active");
   });
 });
+
+// ===== CONTACT FORM -> WHATSAPP =====
+const whatsappForm = document.getElementById("whatsappForm");
+
+if (whatsappForm) {
+  whatsappForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nom = document.getElementById("nom").value.trim();
+    const prenoms = document.getElementById("prenoms").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const telephone = document.getElementById("telephone").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    const whatsappMessage =
+      `📩 *NOUVEAU MESSAGE – SITE BOKONON AGBA*\n\n` +
+      `👤 *Nom* : ${nom}\n` +
+      `👤 *Prénoms* : ${prenoms}\n` +
+      `📧 *Email* : ${email}\n` +
+      `📞 *Téléphone* : ${telephone}\n\n` +
+      `📝 *Message* :\n${message}`;
+
+    const phoneNumber = "22962620000";
+    const whatsappURL =
+      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    window.open(whatsappURL, "_blank");
+  });
+}
+
+
+
+
