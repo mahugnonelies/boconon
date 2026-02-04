@@ -973,6 +973,12 @@ copyright {
   margin-bottom: 30px;
 }
 
+.work-container h1 {
+  font-size: 25px;
+  color: #2c2c2c;
+  margin-bottom: 25px;
+}
+
 .work-image {
   width: 100%;
   border-radius: 8px;
@@ -994,6 +1000,10 @@ copyright {
 
   .work-container h2 {
     font-size: 26px;
+  }
+
+  .work-container h1 {
+    font-size: 20px;
   }
 
   .work-container p {
