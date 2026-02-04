@@ -1319,6 +1319,23 @@ form button {
   }
 }
 
+/* ===== PREMIUM ANIMATION ===== */
+.fade-slide {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlide 1s ease forwards;
+}
+
+.fade-slide.delay-1 {
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeSlide {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 
 
