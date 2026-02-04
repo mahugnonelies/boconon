@@ -54,3 +54,27 @@ domainIcons.forEach(icon => {
   });
 });
 
+// TESTIMONIALS SLIDER
+const testimonials = document.querySelectorAll(".testimonial");
+const dots = document.querySelectorAll(".dot");
+let testimonialIndex = 0;
+
+function showTestimonial(index) {
+  testimonials.forEach(t => t.classList.remove("active"));
+  dots.forEach(d => d.classList.remove("active"));
+
+  testimonials[index].classList.add("active");
+  dots[index].classList.add("active");
+}
+
+setInterval(() => {
+  testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+  showTestimonial(testimonialIndex);
+}, 5000);
+
+dots.forEach((dot, i) => {
+  dot.addEventListener("click", () => {
+    testimonialIndex = i;
+    showTestimonial(i);
+  });
+});
