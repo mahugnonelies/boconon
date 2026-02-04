@@ -129,15 +129,25 @@ button {
 }
 
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   background: #ff7a00;
   color: white;
+  text-decoration: none;
+
   border: none;
   padding: 15px 25px;
   font-weight: bold;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1;
+
   cursor: pointer;
   border-radius: 4px;
-  transition: 0.3s ease;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn:hover {
