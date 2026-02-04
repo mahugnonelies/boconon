@@ -154,6 +154,38 @@ if (whatsappForm) {
   });
 }
 
+// ===== CONSULTATION FORM -> WHATSAPP =====
+const consultationForm = document.getElementById("consultationWhatsappForm");
+
+if (consultationForm) {
+  consultationForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nom = document.getElementById("c-nom").value.trim();
+    const prenoms = document.getElementById("c-prenoms").value.trim();
+    const email = document.getElementById("c-email").value.trim();
+    const telephone = document.getElementById("c-telephone").value.trim();
+    const adresse = document.getElementById("c-adresse").value.trim();
+    const pays = document.getElementById("c-pays").value.trim();
+    const probleme = document.getElementById("c-probleme").value.trim();
+
+    const message =
+      `🧿 *DEMANDE DE CONSULTATION – SITE BOKONON AGBA*\n\n` +
+      `👤 *Nom* : ${nom}\n` +
+      `👤 *Prénoms* : ${prenoms}\n` +
+      `📧 *Email* : ${email}\n` +
+      `📞 *Téléphone* : ${telephone}\n` +
+      `🏠 *Adresse* : ${adresse || "Non précisée"}\n` +
+      `🌍 *Pays* : ${pays || "Non précisé"}\n\n` +
+      `📝 *Problème décrit* :\n${probleme}`;
+
+    const phoneNumber = "22962620000";
+    const whatsappURL =
+      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, "_blank");
+  });
+}
 
 
 
