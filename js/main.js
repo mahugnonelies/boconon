@@ -187,5 +187,16 @@ if (consultationForm) {
   });
 }
 
+document.querySelectorAll(".page-transition").forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    const href = link.getAttribute("href");
+    document.getElementById("pageFade").classList.add("active");
+
+    setTimeout(() => {
+      window.location.href = href;
+    }, 400);
+  });
+});
 
 
