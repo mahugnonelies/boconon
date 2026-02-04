@@ -216,29 +216,7 @@ const revealOnScroll = () => {
 window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
 
-<script>
-  const tabButtons = document.querySelectorAll(".tab-btn");
-  const tabTexts = document.querySelectorAll(".tab-text");
 
-  tabButtons.forEach(button => {
-    button.addEventListener("click", () => {
-
-      // Retirer active de tous les boutons
-      tabButtons.forEach(btn => btn.classList.remove("active"));
-
-      // Retirer active de tous les textes
-      tabTexts.forEach(text => text.classList.remove("active"));
-
-      // Activer le bouton cliqué
-      button.classList.add("active");
-
-      // Activer le texte correspondant
-      const target = button.getAttribute("data-tab");
-      document.getElementById(target).classList.add("active");
-
-    });
-  });
-</script>
 
 
 
