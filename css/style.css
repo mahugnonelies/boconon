@@ -910,7 +910,6 @@ copyright {
   height: 60vh;
   background: url("../assets/travaux-hero.jpg") center/cover no-repeat;
   display: flex;
-  align-items: center;
 }
 
 .page-hero-overlay {
