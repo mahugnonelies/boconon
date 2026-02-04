@@ -804,3 +804,17 @@ copyright {
   }
 }
 
+.whatsapp-float {
+  animation: popIn 0.6s ease 1s both;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
