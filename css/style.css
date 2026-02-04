@@ -818,3 +818,93 @@ copyright {
     transform: scale(1);
   }
 }
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+  position: relative;
+  height: 60vh;
+  background: url("../assets/travaux-hero.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+}
+
+.page-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+}
+
+.page-hero-content {
+  position: relative;
+  color: white;
+  padding: 0 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.page-hero-subtitle {
+  letter-spacing: 3px;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.page-hero-content h1 {
+  font-size: 48px;
+  margin: 15px 0;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.breadcrumb a {
+  color: white;
+  text-decoration: none;
+}
+
+/* ===== WORK SECTION ===== */
+.work-section {
+  background: #ffffff;
+  padding: 100px 20px;
+}
+
+.work-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.work-container h2 {
+  font-size: 32px;
+  color: #2c2c2c;
+  margin-bottom: 30px;
+}
+
+.work-image {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+
+.work-container p {
+  font-size: 17px;
+  line-height: 1.9;
+  color: #8a8a8a;
+  margin-bottom: 25px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .page-hero-content h1 {
+    font-size: 32px;
+  }
+
+  .work-container h2 {
+    font-size: 26px;
+  }
+
+  .work-container p {
+    font-size: 16px;
+  }
+}
+
