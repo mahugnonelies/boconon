@@ -78,3 +78,15 @@ dots.forEach((dot, i) => {
     showTestimonial(i);
   });
 });
+
+// EVENTS ACTIVE DATE
+const eventItems = document.querySelectorAll(".event-item");
+const eventDates = document.querySelectorAll(".event-date");
+
+eventItems.forEach((item, index) => {
+  item.addEventListener("click", () => {
+    eventDates.forEach(d => d.classList.remove("active"));
+    eventDates[index].classList.add("active");
+  });
+});
+
