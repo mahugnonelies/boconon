@@ -157,3 +157,76 @@ button {
   }
 }
 
+/* ===== ABOUT SECTION ===== */
+.about-section {
+  background: #ffffff;
+  padding: 100px 20px;
+}
+
+.about-container {
+  max-width: 700px;
+  margin: auto;
+}
+
+.about-container h2 {
+  font-size: 36px;
+  font-weight: 400;
+  color: #2c2c2c;
+  margin-bottom: 40px;
+}
+
+.about-main {
+  font-size: 18px;
+  line-height: 1.9;
+  color: #3a3a3a;
+  margin-bottom: 30px;
+}
+
+.about-secondary {
+  font-size: 17px;
+  line-height: 1.9;
+  color: #8a8a8a;
+  margin-bottom: 50px;
+}
+
+.about-btn {
+  background: #ff7a00;
+  color: white;
+  border: none;
+  padding: 18px 35px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.about-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* ===== ANIMATION ===== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .about-container h2 {
+    font-size: 28px;
+  }
+
+  .about-main,
+  .about-secondary {
+    font-size: 16px;
+  }
+}
+
+
