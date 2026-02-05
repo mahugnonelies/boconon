@@ -224,6 +224,19 @@ document.querySelectorAll(".drawer a").forEach(link => {
   }
 });
 
+const revealElements = document.querySelectorAll(".reveal");
+
+const revealOnScroll = () => {
+  revealElements.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 120) {
+      el.classList.add("active");
+    }
+  });
+};
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
 
 
 
