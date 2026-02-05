@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
 
       const message =
-        `📩 *NOUVEAU MESSAGE – SITE BOKONON AGBA*\n\n` +
+        `📩 *NOUVEAU MESSAGE – SA MAJESTE AMANDEKPO*\n\n` +
         `👤 Nom : ${document.getElementById("nom").value}\n` +
         `👤 Prénoms : ${document.getElementById("prenoms").value}\n` +
         `📧 Email : ${document.getElementById("email").value}\n` +
