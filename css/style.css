@@ -120,16 +120,49 @@ body {
 
 /* ===== MOBILE ===== */
 @media (max-width: 900px) {
+
+  .header {
+    position: fixed;
+    height: 72px;
+    padding: 0 16px;
+  }
+
+  /* LEFT stays left */
+  .header-left {
+    flex: 1;
+  }
+
+  /* CENTER LOGO */
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 38px;
+  }
+
+  /* SHOW PHONE ON MOBILE */
+  .phone-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    font-size: 12px;
+  }
+
+  .phone,
+  .phone.secondary {
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  /* Hide desktop nav */
   .nav-desktop {
     display: none;
   }
 
+  /* Menu button visible */
   .menu-btn {
     display: flex;
-  }
-
-  .phone-box {
-    display: none;
   }
 }
 
