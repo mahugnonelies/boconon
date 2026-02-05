@@ -1434,7 +1434,7 @@ form button {
 }
 
 /* TEXTE */
-.cta-text {
+.cta2-text {
   color: #ffffff;
   font-size: 30px;
   font-weight: 300;
@@ -1442,12 +1442,12 @@ form button {
   margin-bottom: 35px;
 }
 
-.cta-text strong {
+.cta2-text strong {
   font-weight: 700;
 }
 
 /* BOUTON */
-.cta-btn {
+.cta2-btn {
   display: inline-block;
   background: #ff7a00;
   color: white;
@@ -1462,20 +1462,20 @@ form button {
   transition: all 0.8s ease;
 }
 
-.cta-container.active .cta-btn {
+.cta-container.active .cta2-btn {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.3s;
 }
 
-.cta-btn:hover {
+.cta2-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
 }
 
 /* MOBILE */
 @media (max-width: 768px) {
-  .cta-text {
+  .cta2-text {
     font-size: 22px;
   }
 }
