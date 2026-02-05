@@ -203,6 +203,26 @@ if (pageLinks.length && pageFade) {
   });
 }
 
+/* ===== ACTIVE NAV LINK ===== */
+const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+// DESKTOP NAV
+document.querySelectorAll(".nav-desktop a").forEach(link => {
+  const linkPage = link.getAttribute("href");
+
+  if (linkPage === currentPage) {
+    link.classList.add("nav-btn");
+  }
+});
+
+// DRAWER NAV (OPTIONNEL : surligner aussi la page active)
+document.querySelectorAll(".drawer a").forEach(link => {
+  const linkPage = link.getAttribute("href");
+
+  if (linkPage === currentPage) {
+    link.classList.add("active");
+  }
+});
 
 
 
