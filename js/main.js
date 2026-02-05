@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `📝 Message :\n${document.getElementById("message").value}`;
 
       window.open(
-        `https://wa.me/22962620000?text=${encodeURIComponent(message)}`,
+        `https://wa.me/22999823910?text=${encodeURIComponent(message)}`,
         "_blank"
       );
     });
@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `📝 Problème :\n${document.getElementById("c-probleme").value}`;
 
       window.open(
-        `https://wa.me/22962620000?text=${encodeURIComponent(message)}`,
+        `https://wa.me/22999823910?text=${encodeURIComponent(message)}`,
         "_blank"
       );
     });
