@@ -239,6 +239,84 @@ window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
 
 
+// ===== AUTO PLAY VIDEO ON SCROLL =====
+const autoVideo = document.getElementById("autoVideo");
+
+if (autoVideo) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          autoVideo.play().catch(() => {});
+        } else {
+          autoVideo.pause();
+        }
+      });
+    },
+    {
+      threshold: 0.6 // 60% visible = lecture
+    }
+  );
+
+  observer.observe(autoVideo);
+}
+
+// ===== IMAGE CAROUSEL =====
+const track = document.getElementById("carouselTrack");
+let index = 0;
+let startX = 0;
+let isDragging = false;
+
+if (track) {
+  const items = document.querySelectorAll(".carousel-item");
+  const total = items.length;
+
+  function updateCarousel() {
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  // AUTO SLIDE
+  setInterval(() => {
+    index = (index + 1) % total;
+    updateCarousel();
+  }, 5000);
+
+  // TOUCH (MOBILE)
+  track.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+  });
+
+  track.addEventListener("touchend", e => {
+    const endX = e.changedTouches[0].clientX;
+    handleSwipe(endX);
+  });
+
+  // MOUSE (DESKTOP)
+  track.addEventListener("mousedown", e => {
+    isDragging = true;
+    startX = e.clientX;
+  });
+
+  track.addEventListener("mouseup", e => {
+    if (!isDragging) return;
+    isDragging = false;
+    handleSwipe(e.clientX);
+  });
+
+  function handleSwipe(endX) {
+    const diff = startX - endX;
+
+    if (diff > 50) {
+      index = (index + 1) % total;
+    } else if (diff < -50) {
+      index = (index - 1 + total) % total;
+    }
+
+    updateCarousel();
+  }
+}
+
+
 
   
 });
