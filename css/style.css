@@ -1617,3 +1617,46 @@ form button {
   }
 }
 
+/* ===== YOUTUBE VIDEO SECTION ===== */
+.youtube-video-section {
+  padding: 100px 20px;
+  background: #0f0f0f;
+}
+
+.youtube-video-container {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.youtube-video-title {
+  color: #fff;
+  font-size: 30px;
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+
+/* Responsive 16:9 */
+.youtube-video-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.youtube-video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .youtube-video-title {
+    font-size: 22px;
+  }
+}
