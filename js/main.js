@@ -316,52 +316,6 @@ if (track) {
   }
 }
 
-const track = document.querySelector(".video-track");
-const slides = document.querySelectorAll(".video-slide");
-const videos = document.querySelectorAll(".video-slide video");
-const prevBtn = document.querySelector(".video-nav.prev");
-const nextBtn = document.querySelector(".video-nav.next");
-
-let currentIndex = 0;
-let startX = 0;
-let isDragging = false;
-
-const updateCarousel = () => {
-  track.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-  videos.forEach(v => {
-    v.pause();
-    v.currentTime = 0;
-  });
-
-  videos[currentIndex].play();
-};
-
-if (track && slides.length) {
-
-  updateCarousel();
-
-  nextBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % slides.length;
-    updateCarousel();
-  });
-
-  prevBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    updateCarousel();
-  });
-
-  // TOUCH / DRAG
-  track.addEventListener("touchstart", e => {
-    startX = e.touches[0].clientX;
-  });
-
-  track.addEventListener("touchend", e => {
-    const diff = startX - e.changedTouches[0].clientX;
-    if (diff > 50) nextBtn.click();
-    if (diff < -50) prevBtn.click();
-  });
-}
 
 
 
