@@ -316,6 +316,53 @@ if (track) {
   }
 }
 
+// ===== VIDEO CAROUSEL =====
+const videoTrack = document.querySelector(".video-track");
+const videoSlides = document.querySelectorAll(".video-slide");
+const videoElements = document.querySelectorAll(".video-slide video");
+const videoPrevBtn = document.querySelector(".video-nav.prev");
+const videoNextBtn = document.querySelector(".video-nav.next");
+
+let videoIndex = 0;
+let videoStartX = 0;
+let videoIsDragging = false;
+
+const updateVideoCarousel = () => {
+  videoTrack.style.transform = `translateX(-${videoIndex * 100}%)`;
+
+  videoElements.forEach(video => {
+    video.pause();
+    video.currentTime = 0;
+  });
+
+  videoElements[videoIndex].play();
+};
+
+if (videoTrack && videoSlides.length) {
+
+  updateVideoCarousel();
+
+  videoNextBtn.addEventListener("click", () => {
+    videoIndex = (videoIndex + 1) % videoSlides.length;
+    updateVideoCarousel();
+  });
+
+  videoPrevBtn.addEventListener("click", () => {
+    videoIndex = (videoIndex - 1 + videoSlides.length) % videoSlides.length;
+    updateVideoCarousel();
+  });
+
+  // TOUCH (MOBILE)
+  videoTrack.addEventListener("touchstart", e => {
+    videoStartX = e.touches[0].clientX;
+  });
+
+  videoTrack.addEventListener("touchend", e => {
+    const diff = videoStartX - e.changedTouches[0].clientX;
+    if (diff > 50) videoNextBtn.click();
+    if (diff < -50) videoPrevBtn.click();
+  });
+}
 
 
 
