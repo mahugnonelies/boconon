@@ -364,7 +364,19 @@ if (videoTrack && videoSlides.length) {
   });
 }
 
+document.querySelectorAll(".unmute-btn").forEach((btn, i) => {
+  btn.addEventListener("click", () => {
+    const video = btn.previousElementSibling;
+    video.muted = false;
+    video.play();
+    btn.style.display = "none";
+  });
+});
 
+
+
+
+  
 
   
 });
